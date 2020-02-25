@@ -17,4 +17,9 @@ public class UfosPark {
 		return flota;
 	}
 
+	public void dispatch(CreditCard abradolph) {
+		
+		
+	}
+
 }
