@@ -13,9 +13,9 @@ public class CreditCard {
 	}
 	
 	public String toString() {
-		return "Owner: " + this.nombreInvitado +
-				"\nNumber: " + this.numeroTarjeta +
-				"\nCredit: " + this.credito + " " + this.symbol;
+		return "Owner: " + getNombre() +
+				"\nNumber: " + number() +
+				"\nCredit: " + credit() + " " + this.symbol;
 	}
 	public String getNombre() {
 		return this.nombreInvitado;
@@ -25,7 +25,13 @@ public class CreditCard {
 	}
 	
 	public double credit() {
-		return this.credito;
+		if (this.credito <= 0) {
+			return 0d;
+		}
+		else {
+			return this.credito;
+		}
+		
 	}
 	public void pay(double coste) {
 		this.credito = this.credito - coste;
