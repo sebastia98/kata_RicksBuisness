@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class UfosParkTest {
-
+	
 	UfosPark ufos = null;
     String[] ovnis = { "unx", "dox", "trex" };
 
@@ -15,6 +15,11 @@ public class UfosParkTest {
      */
     @Test
     public void addUfoTest() {
+    	UfosPark ufosPark = new UfosPark();
+    	for (String ovni : ovnis) {
+        	ufosPark.add(ovni);
+    	}
+    	assertArrayEquals(ufosPark.getFlota().toArray(), ovnis);
     }
 
     /**
