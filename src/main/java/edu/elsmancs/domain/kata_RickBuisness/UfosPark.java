@@ -9,9 +9,15 @@ public class UfosPark {
 	private final double fee = 500d;
 	private Map<String, String> flotaReservada = new HashMap <String, String>();
 	private ArrayList<String> flota = new ArrayList<String>();
+	private ArrayList<String> nombresNaves = new ArrayList<String>(); 
 
+	public String toString(){
+		return nombresNaves.toString();
+	}
+	
 	public void add(String ovniID) {
 		this.flota.add(ovniID);
+		this.nombresNaves.add(ovniID);
 	}
 	
 	public Map<String, String> getFlotaReserva(){

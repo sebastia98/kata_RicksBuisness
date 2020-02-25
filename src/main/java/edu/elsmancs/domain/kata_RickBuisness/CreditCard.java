@@ -15,7 +15,7 @@ public class CreditCard {
 	public String toString() {
 		return "Owner: " + this.nombreInvitado +
 				"\nNumber: " + this.numeroTarjeta +
-				"Credit: " + this.credito + " " + this.symbol;
+				"\nCredit: " + this.credito + " " + this.symbol;
 	}
 	public String getNombre() {
 		return this.nombreInvitado;
