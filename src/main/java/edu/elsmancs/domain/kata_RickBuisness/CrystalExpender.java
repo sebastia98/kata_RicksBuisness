@@ -1,6 +1,6 @@
 package edu.elsmancs.domain.kata_RickBuisness;
 
-public class CrystalExpender {
+public class CrystalExpender implements GuestDispatcher{
 	private int unidades = 0;
 	private double costeUnidad = 0d;
 

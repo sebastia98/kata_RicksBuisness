@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UfosPark {
+public class UfosPark implements GuestDispatcher {
 	
 	private final double fee = 500d;
 	private Map<String, String> flotaReservada = new HashMap <String, String>();
