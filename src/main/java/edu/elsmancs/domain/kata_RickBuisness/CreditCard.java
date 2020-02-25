@@ -20,7 +20,7 @@ public class CreditCard {
 	public String getNombre() {
 		return this.nombreInvitado;
 	}
-	public String getNumeroTarjeta() {
+	public String number() {
 		return this.numeroTarjeta;
 	}
 	

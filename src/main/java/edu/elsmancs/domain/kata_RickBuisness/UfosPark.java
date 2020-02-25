@@ -23,14 +23,19 @@ public class UfosPark {
 	}
 
 	public void dispatch(CreditCard abradolph) {
-		if (abradolph.credit() >= this.fee && this.flota.size() > 0) {
-			abradolph.pay(fee);
-			this.flotaReservada.put(abradolph.getNombre(), this.flota.remove(0));
+		if (this.getFlotaReserva().containsKey(abradolph.number())) {
+			
+		}
+		else {
+			if (abradolph.credit() >= this.fee && this.flota.size() > 0 ) {
+				abradolph.pay(fee);
+				this.flotaReservada.put(abradolph.number(), this.flota.remove(0));
+			}
 		}
 		
 	}
 	
-	public String getUfosOf(String nombrePersonaje) {
+	public String getUfoOf(String nombrePersonaje) {
 		return this.flotaReservada.get(nombrePersonaje);
 	}
 

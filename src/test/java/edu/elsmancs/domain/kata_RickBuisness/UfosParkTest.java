@@ -38,7 +38,7 @@ public class UfosParkTest {
     	CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
     	ufos.dispatch(abradolph);
     	assertEquals(abradolph.credit(), abradolph.credit(), 0);
-    	assertEquals(ufos.getFlotaReserva().get("Abradolph Lincler"), "unx");
+    	assertEquals(ufos.getFlotaReserva().get("4916119711304546"), "unx");
     	String[] ovnisTest = { "dox", "trex" };
     	assertArrayEquals(ufos.getFlota().toArray(), ovnisTest);
     }
@@ -64,11 +64,11 @@ public class UfosParkTest {
     @Test
     public void dispatchUfoAlreadyReservedTest() {
     	CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
-    	CreditCard sebas = new CreditCard("Sebas Adrover", "4916119711304546");
+    	CreditCard sebas = new CreditCard("Sebas Adrover", "4916119711304547");
     	ufos.dispatch(abradolph);
     	ufos.dispatch(sebas);
-    	assertEquals(ufos.getFlotaReserva().get("Abradolph Lincler"), "unx");
-    	assertEquals(ufos.getFlotaReserva().get("Sebas Adrover"), "dox");
+    	assertEquals(ufos.getFlotaReserva().get("4916119711304546"), "unx");
+    	assertEquals(ufos.getFlotaReserva().get("4916119711304547"), "dox");
     	
     }
 
@@ -97,7 +97,7 @@ public class UfosParkTest {
     public void getUfoOfTest() {
     	CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
     	ufos.dispatch(abradolph);
-    	assertEquals(ufos.getUfosOf(abradolph.getNombre()), "unx");
+    	assertEquals(ufos.getUfoOf(abradolph.number()), "unx");
     }
 	
 

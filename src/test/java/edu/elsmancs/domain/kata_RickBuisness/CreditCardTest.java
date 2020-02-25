@@ -10,7 +10,7 @@ public class CreditCardTest {
 	public void crearCreditCardTest() {
 		 CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
 		 assertEquals(abradolph.getNombre(), "Abradolph Lincler" );
-		 assertEquals(abradolph.getNumeroTarjeta(), "4916119711304546");
+		 assertEquals(abradolph.number(), "4916119711304546");
 		 assertEquals(abradolph.credit(), 3000d, 0);		 
 	}
 	@Test
