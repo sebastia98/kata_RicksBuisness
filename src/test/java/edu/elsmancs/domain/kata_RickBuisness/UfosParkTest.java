@@ -9,6 +9,7 @@ public class UfosParkTest {
 	
 	UfosPark ufos = null;
     String[] ovnis = { "unx", "dox", "trex" };
+    String[] ovnisTest = {"trex", "dox", "unx"};
     
     @Before
     public void before() {
@@ -24,7 +25,7 @@ public class UfosParkTest {
      */
     @Test
     public void addUfoTest() {
-    	assertArrayEquals(ufos.getFlota().toArray(), ovnis);
+    	assertArrayEquals(ufos.getFlota().keySet().toArray(), ovnisTest);
     }
 
     /**
@@ -37,10 +38,8 @@ public class UfosParkTest {
     public void dispatchTest() {
     	CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
     	ufos.dispatch(abradolph);
-    	assertEquals(abradolph.credit(), abradolph.credit(), 0);
-    	assertEquals(ufos.getFlotaReserva().get("4916119711304546"), "unx");
-    	String[] ovnisTest = { "dox", "trex" };
-    	assertArrayEquals(ufos.getFlota().toArray(), ovnisTest);
+    	assertEquals(abradolph.credit(), 2500d, 0);
+    	assertEquals(ufos.getFlota().get("trex"), "4916119711304546");
     }
 
     /**
@@ -53,7 +52,7 @@ public class UfosParkTest {
     	CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
     	abradolph.pay(3000d);
     	assertEquals(abradolph.credit(), 0, 0);
-    	assertArrayEquals(ufos.getFlota().toArray(), ovnis);
+    	assertEquals(ufos.getFlota().containsValue(abradolph.number()), false);
     }
 
     /**
@@ -67,8 +66,8 @@ public class UfosParkTest {
     	CreditCard sebas = new CreditCard("Sebas Adrover", "4916119711304547");
     	ufos.dispatch(abradolph);
     	ufos.dispatch(sebas);
-    	assertEquals(ufos.getFlotaReserva().get("4916119711304546"), "unx");
-    	assertEquals(ufos.getFlotaReserva().get("4916119711304547"), "dox");
+    	assertEquals(ufos.getFlota().get("trex"), "4916119711304546");
+    	assertEquals(ufos.getFlota().get("dox"), "4916119711304547");
     	
     }
 
@@ -97,7 +96,7 @@ public class UfosParkTest {
     public void getUfoOfTest() {
     	CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
     	ufos.dispatch(abradolph);
-    	assertEquals(ufos.getUfoOf(abradolph.number()), "unx");
+    	assertEquals(ufos.getUfoOf(abradolph.number()), "trex");
     }
 	
 

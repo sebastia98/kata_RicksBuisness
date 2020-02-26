@@ -1,48 +1,49 @@
 package edu.elsmancs.domain.kata_RickBuisness;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UfosPark implements GuestDispatcher {
 	
 	private final double fee = 500d;
-	private Map<String, String> flotaReservada = new HashMap <String, String>();
-	private ArrayList<String> flota = new ArrayList<String>();
-	private ArrayList<String> nombresNaves = new ArrayList<String>(); 
+	private Map<String, String> flota = new HashMap <String, String>(); 
 
 	public String toString(){
-		return nombresNaves.toString();
+		return flota.keySet().toString();
 	}
 	
 	public void add(String ovniID) {
-		this.flota.add(ovniID);
-		this.nombresNaves.add(ovniID);
+		this.flota.put(ovniID, null);
 	}
 	
-	public Map<String, String> getFlotaReserva(){
-		return this.flotaReservada;
-	}
-	
-	public ArrayList<String> getFlota(){
-		return flota;
+	public Map<String, String> getFlota(){
+		return this.flota;
 	}
 
 	public void dispatch(CreditCard abradolph) {
-		if (this.getFlotaReserva().containsKey(abradolph.number())) {
+		if (this.getFlota().containsKey(abradolph.number())) {
 			
 		}
-		else {
-			if (abradolph.credit() >= this.fee && this.flota.size() > 0 ) {
-				abradolph.pay(fee);
-				this.flotaReservada.put(abradolph.number(), this.flota.remove(0));
+		else if (abradolph.credit() >= this.fee) {
+			for (String ovniID: this.getFlota().keySet()) {
+				if (this.getFlota().get(ovniID) == null) {
+					abradolph.pay(fee);
+					this.getFlota().put(ovniID, abradolph.number());
+					break;
+				}
 			}
 		}
 		
 	}
 	
 	public String getUfoOf(String nombrePersonaje) {
-		return this.flotaReservada.get(nombrePersonaje);
+		String ovni = null;
+		for (String ovniID: this.getFlota().keySet()) {
+			if (this.getFlota().get(ovniID) == nombrePersonaje) {
+				ovni = ovniID;
+			}
+		}
+		return ovni;
 	}
 
 }
