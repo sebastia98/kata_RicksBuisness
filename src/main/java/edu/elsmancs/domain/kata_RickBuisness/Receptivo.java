@@ -16,7 +16,7 @@ public class Receptivo {
 		return this.guest;
 	}
 	public void dispatch(CreditCard personaje) {
-		for (GuestDispatcher objeto: guest) {
+		for (GuestDispatcher objeto: this.getGuest()) {
 			objeto.dispatch(personaje);
 		}
 		
